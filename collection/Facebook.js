@@ -23,6 +23,16 @@ const FSchema = new mongoose.Schema (
         }
 );
 
+FSchema.set('toObject', {
+    transform: function (doc, ret) {
+      delete ret._id
+      delete ret.__v
+      delete ret.Address._id
+      delete ret.Address.__v
+    }
+  })
+  
+
 const Facebook = mongoose.model('Facebook', FSchema);
 
 module.exports = Facebook;

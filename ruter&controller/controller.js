@@ -1,8 +1,8 @@
 const Emitter = require('events');
 var myEmitter = new Emitter();
-const eventsConfig= require('./config').events;
+const eventsConfig= require('../config').events;
 const mongoose= require('mongoose');
-const FaceBook  = require('./models/Facebook');
+const FaceBook  = require('../collection/Facebook');
 
 
 exports.FacebookController = {
@@ -16,8 +16,10 @@ exports.FacebookController = {
       {
         console.log(` data with ${NumberFriend}:`); 
         myEmitter.on(eventsConfig.Find, async()=>{
-          const result= await FaceBook.findOne({NumberFriend});
-          if(result) {console.log(result);res.json(result);}
+          const result= await FaceBook.findOne({NumberFriend}).select("-__v -_id -Address.__v -Address._id");
+          if(result) {
+            console.log(result);
+            return res.send(result);}
           else res.status(404).send(`The Data about Friend with NumberFriend:${NumberFriend} is not found`);
         });
 
@@ -29,8 +31,8 @@ exports.FacebookController = {
     else{// print all data
       console.log("All Data of The Friends on fcebook:");
       myEmitter.on(eventsConfig.Find, async()=>{
-        const result= await FaceBook.findOne({});
-        if(result) {console.log(result);res.json(result);}
+        const result= await FaceBook.find({}).select("-__v -_id -Address.__v -Address._id");
+        if(result) {console.log(result);res.send(result);}
         else res.status(404).send(`The DataBase is empty`);
       });
       myEmitter.emit(eventsConfig.Find);

@@ -1,7 +1,7 @@
-require('./db_connections');
+require('./DB/db_connections');
 const Express = require('express');
 const logger = require('morgan'); // NOTE: for debugging
-const FacebookRouter= require('./router');
+const FacebookRouter= require('./ruter&controller/router');
 const app = Express();
 const port = process.env.PORT || 3000;
 

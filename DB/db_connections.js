@@ -6,7 +6,7 @@ const connection = `mongodb+srv://${DB_USER}:${DB_PASS}@${DB_HOST}`;
 const options = {
   useCreateIndex: true,
   useNewUrlParser: true,
-  useUnifiedTopology: true // To remove annoying warning
+  useUnifiedTopology: true,
 };
 
 mongoose.connect(connection, options)
