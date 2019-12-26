@@ -19,5 +19,15 @@ FacebookRouter.delete('/deleteAllFriends', FacebookController.delete);
 
 //DELETE /Facebook/deleteFrrend/{NumberFriend(number)}
 FacebookRouter.delete('/deleteFriend/:id', FacebookController.delete);
+
+FacebookRouter.all('*',(req, res) => {
+    res.write("Write (GET) /printAllFriends for print all data");
+    res.write("Write:(GET)  /printFriend/:id for print Specific data");
+    res.write("Write (POST) /createFriend for create data");
+    res.write("Write (PUT) /uptadeFriend/:id for update Specific data");
+    res.write("Write (DELETE) /deleteFriend/:id for delete Specific data");
+    res.write("Write (DELETE) /deleteAllFriends for delete All data");
+    res.send ("Happy Fun !!!!");
+})
 module.exports = FacebookRouter;
    
