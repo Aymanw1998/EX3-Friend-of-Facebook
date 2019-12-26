@@ -19,7 +19,7 @@ exports.FacebookController = {
           const result= await FaceBook.findOne({NumberFriend}).select("-__v -_id -Address.__v -Address._id");
           if(result) {
             console.log(result);
-            return res.send(JSON.result);}
+            return res.send(result);}
           else res.status(404).send(`The Data about Friend with NumberFriend:${NumberFriend} is not found`);
         });
 
@@ -32,7 +32,7 @@ exports.FacebookController = {
       console.log("All Data of The Friends on fcebook:");
       myEmitter.on(eventsConfig.Find, async()=>{
         const result= await FaceBook.find({}).select("-__v -_id -Address.__v -Address._id");
-        if(result) {console.log(result);res.json(result);}
+        if(result) {console.log(result);res.send(result);}
         else res.status(404).send(`The DataBase is empty`);
       });
       myEmitter.emit(eventsConfig.Find);
