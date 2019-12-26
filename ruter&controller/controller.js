@@ -31,8 +31,10 @@ exports.FacebookController = {
     else{// print all data
       console.log("All Data of The Friends on fcebook:");
       myEmitter.on(eventsConfig.Find, async()=>{
-        const result= await FaceBook.find({}).select("-__v -_id -Address.__v -Address._id");
-        if(result) {console.log(result);res.send(result);}
+        const result= await FaceBook.findOne({});// you want know if have data
+        if(result){
+          const result= await FaceBook.find({}).select("-__v -_id -Address.__v -Address._id");
+          console.log(result);res.send(result);}
         else res.status(404).send(`The DataBase is empty`);
       });
       myEmitter.emit(eventsConfig.Find);
