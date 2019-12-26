@@ -11,7 +11,7 @@ app.use(logger('dev'));
 
 
 app.use('/Facebook', FacebookRouter);
-app.all('*', (req, res) => res.send("write .../Facebook in url"));
+app.all('*', (req, res) => res.send("write and add ...'/Facebook' in url"));
 
 //exception catch
 app.use((err, req, res, next) => {
