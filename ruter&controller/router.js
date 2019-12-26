@@ -12,7 +12,7 @@ FacebookRouter.get('/printFriend/:id', FacebookController.get);
 FacebookRouter.post('/createFriend', FacebookController.post);
 
 //PUT /Facebook/uptadeFriend/{NumberFriend(number)}
-FacebookRouter.put('/uptadeFriend/:id', FacebookController.put);
+FacebookRouter.put('/updateFriend/:id', FacebookController.put);
 
 //DELETE /Facebook/deleteAllFriends
 FacebookRouter.delete('/deleteAllFriends', FacebookController.delete);
